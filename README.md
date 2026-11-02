@@ -99,7 +99,7 @@ Example questions are in `examples/questions.txt`. A multi-part question may req
 
 Tests use a **small synthetic fixture**, not real patient data. They validate calculations independently of the LLM, which is important when evaluating tool-using systems.
 
-## 7. Student assignment (10–15 minutes)
+## 7. Student assignment
 
 1. Run one single-tool and one multi-tool question; record which tools the agent called.
 2. Check the returned statistics using pandas or the unit tests.
