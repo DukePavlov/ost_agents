@@ -29,6 +29,7 @@ Install **Python 3.11 or 3.12**, **VS Code** (optional), and **Ollama**:
 Open **PowerShell** in this project folder. The commands below call the virtual environment's Python executable directly, so PowerShell execution policy changes are unnecessary.
 
 ```powershell
+irm https://ollama.com/install.ps1 | iex (as administrator)
 py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
