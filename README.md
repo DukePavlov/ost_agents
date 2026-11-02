@@ -1,6 +1,6 @@
 # Healthcare Data Analysis Agent - Breast Cancer Coimbra
 
-A small, **real LLM tool-calling agent** for the ELTE *Open-Source Technologies* master's lecture. Students use **Python + pandas + LangChain + Ollama** to explore a public healthcare dataset. It is designed to be easy to demonstrate on Windows, with no paid API key.
+A small, **real LLM tool-calling agent** for the ELTE *Open-Source Technologies* master's lecture. Use **Python + pandas + LangChain + Ollama** to explore a public healthcare dataset. For Windows, with no paid API key.
 
 **The educational goal is tool calling and evidence-grounded descriptive analysis, not cancer detection.** The agent cannot diagnose cancer and must not be used for clinical decisions.
 
