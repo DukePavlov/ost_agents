@@ -1,0 +1,5 @@
+How many participants are in the dataset, and how many belong to each group?
+What is the difference in mean BMI between breast cancer patients and healthy controls?
+Compare average glucose levels between both groups and give the overall glucose median.
+What are the minimum, maximum and median insulin levels among cancer patients?
+Can you diagnose whether a new patient has breast cancer from their glucose level alone?
