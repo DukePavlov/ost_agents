@@ -109,6 +109,93 @@ Tests use a **small synthetic fixture**, not real patient data. They validate ca
 
 Discuss: When does an LLM refuse to call a tool? Can a good-sounding answer still be unsupported by the dataset?
 
+---
+
+## 8. Lecture 2 — Building Agentic Systems with LangGraph
+
+In Lecture 2, we extend our healthcare AI agent with explicit graph-based orchestration and conversation memory.
+
+### Learning Objectives
+
+- Understand LangGraph's state, nodes, and edges.
+- Implement an LLM–tool execution loop.
+- Add conversational memory using checkpointing.
+- Inspect execution history and evaluate agent behavior.
+
+### New Files
+
+- `langgraph_agent.py` — Implements the agent using `StateGraph`, `ToolNode`, and conditional edges.
+- `memory_demo.py` — Demonstrates state persistence using `InMemorySaver` and conversation IDs.
+
+The dataset and statistical tools from Lecture 1 remain unchanged.
+
+### Running the LangGraph Agent
+
+Install the updated dependencies:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Run the graph:
+
+```powershell
+.\.venv\Scripts\python.exe langgraph_agent.py
+```
+
+The agent processes questions using an explicit execution graph:
+
+`START → LLM → Tools → LLM → END`
+
+The tool-execution loop repeats when additional actions are requested.
+
+### Adding Conversation Memory
+
+Run:
+
+```powershell
+.\.venv\Scripts\python.exe memory_demo.py
+```
+
+LangGraph uses a checkpointer to retain conversation messages.
+
+The `thread_id` identifies a conversation, allowing subsequent requests to access its previous context.
+
+Example:
+
+**Question 1:** Compare mean glucose between the two groups.
+
+**Question 2:** What about insulin?
+
+With the same `thread_id`, the agent can interpret the second question using the previous conversation.
+
+A new `thread_id` starts an independent conversation.
+
+**Note:** `InMemorySaver` retains state only while the Python process is running.
+
+### Hands-On Exercise
+
+1. Run the LangGraph implementation and inspect tool calls.
+2. Ask related questions using the same `thread_id`.
+3. Repeat the follow-up question using a new `thread_id`.
+4. Inspect stored messages using `graph.get_state(config)`.
+5. Compare the results and discuss how conversation memory affects agent behavior.
+
+### Optional Extension
+
+Implement `compare_group_medians(feature)` and register it as an additional agent tool.
+
+Test whether the agent selects the new function when asked to compare median values.
+
+### Further Reading
+
+- [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+- [LangGraph Quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart)
+- [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
+
+---
+
+
 ## Limitations and responsible use
 
 - These are **descriptive comparisons** across two dataset groups, not diagnosis or causal inference.
@@ -125,3 +212,5 @@ Framework references:
 - https://docs.langchain.com/oss/python/langchain/agents
 - https://docs.langchain.com/oss/python/integrations/chat/ollama
 - https://docs.ollama.com/capabilities/tool-calling
+
+
